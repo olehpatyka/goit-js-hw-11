@@ -10,7 +10,14 @@ body {
   font-family: system-ui, sans-serif;
 }
 
-ul {
+ul,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   padding: 0;
   margin: 0;
 }
@@ -24,24 +31,99 @@ li {
 img {
   display: block;
 }
+.form {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 36px 0 32px;
+}
+.text-field {
+  border-radius: 4px;
+  width: 272px;
+  height: 40px;
+
+  padding: 8px 16px;
+  border: 1px solid #808080;
+}
+.text-field::placeholder {
+  font-weight: 400;
+  font-size: 16px;
+
+  /* line-height: 24px; */
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #808080;
+}
+.text-field:hover {
+  border-color: #000;
+}
+.text-field:focus {
+  outline: none;
+  border-color: #4e75ff;
+}
+
+.submit-btn {
+  border-radius: 8px;
+  padding: 8px 16px;
+  height: 40px;
+
+  font-weight: 500;
+  font-size: 16px;
+
+  /* line-height: 24px; */
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #fff;
+  background-color: #4e75ff;
+  border: none;
+  cursor: pointer;
+}
+
+.submit-btn:hover,
+.submit-btn:active {
+  background: #6c8cff;
+}
 
 .gallery {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
+.gallery-item {
+  border: 1px solid black;
+}
 
 .gallery-image {
   object-fit: cover;
-  width: 300px;
+  width: 360px;
   height: 200px;
-
-  transition: transform 150ms ease-in-out;
 }
 
-.gallery-image:hover,
-.gallery-image:active {
-  transform: scale(105%);
+.info-list {
+  background: #fff;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 4px;
+}
+.info-data {
+}
+.data-title {
+  font-weight: 600;
+  font-size: 12px;
+
+  /* line-height: 16px; */
+  line-height: 1.33333;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+}
+.data-value {
+  font-weight: 400;
+  font-size: 12px;
+
+  /* line-height: 24px; */
+  line-height: 2;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
 }
 
 /* Loader */
@@ -52,11 +134,13 @@ img {
   width: calc(48 * var(--size));
   height: calc(48 * var(--size));
   border-radius: 50%;
-  display: inline-block;
+  display: block;
   border-top: calc(3 * var(--size)) solid var(--color-1);
   border-right: calc(3 * var(--size)) solid transparent;
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
+
+  margin: 0 auto;
 }
 
 @keyframes rotation {
