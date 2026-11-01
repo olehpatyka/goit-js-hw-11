@@ -17,23 +17,24 @@ formElem.addEventListener('submit', handleFormSubmit);
 function handleFormSubmit(e) {
   e.preventDefault();
 
-  showLoader();
-  clearGallery();
-
   const formData = new FormData(e.target);
   const data = {
     searchText: formData.get('search-text'),
   };
 
-  getImagesByQuery({
-    key: '58348296-09295ab4c2033fd1acf2ac2b8',
-    q: data.searchText,
-    image_type: 'photo',
-    orientation: 'horizontal',
-    safesearch: true,
-  })
-    .then(response => {
-      const data = response.data;
+  if (!data.searchText.trim()) {
+    iziToast.error({
+      message: 'Please write at least something to search for.',
+      position: 'bottomCenter',
+    });
+    return;
+  }
+
+  showLoader();
+  clearGallery();
+
+  getImagesByQuery(data.searchText)
+    .then(data => {
       const hits = data.hits;
 
       if (!hits.length) {

@@ -6,13 +6,12 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 const galleryList = document.querySelector('.gallery');
 const loader = document.querySelector('.loader');
 
-let gallery;
+let gallery = new SimpleLightbox('.gallery a');
 
 export function createGallery(images) {
   const markup = itemsTemplate(images);
   galleryList.innerHTML = markup;
 
-  gallery = new SimpleLightbox('.gallery a');
   gallery.refresh();
 }
 
